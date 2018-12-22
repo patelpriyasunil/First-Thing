@@ -35,7 +35,21 @@ $(document).ready(function() {
         }).then(function(response) {
             console.log(queryURL);
             console.log(response);
-        })
+        });
     };
     getLocation();
+
+    function googleLocation() {
+        var APIKey = "AIzaSyCh4H_JTQPRDjRLXjGkPYaYmfdaX6y5ncI";
+        var queryURL = "https://www.googleapis.com/geolocation/v1/geolocate?key=" + APIKey;
+
+        $.ajax({
+            url: queryURL,
+            method: "POST"
+        }).then(function(response) {
+            console.log(response);
+            console.log(queryURL);
+        });
+    };
+    googleLocation();
 });
