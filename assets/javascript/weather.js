@@ -10,8 +10,12 @@ $(document).ready(function() {
     }).then(function(response) {
         console.log(queryURL);
         console.log(response);
-        var weatherIcon = "http://openweathermap.org/img/w/" + response.weather[0].icon + ".png"
-        console.log(weatherIcon);
+        var weatherIconURL = "http://openweathermap.org/img/w/" + response.weather[0].icon + ".png";
+        var weatherIcon = $("<img>");
+        weatherIcon.attr("src", weatherIconURL);
+        console.log(weatherIconURL);
         $("#weather").text(JSON.stringify(response));
+        $("#weather").append(weatherIcon);
+        
     })
 });
