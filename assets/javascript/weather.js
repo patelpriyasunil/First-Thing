@@ -49,7 +49,10 @@ $(document).ready(function() {
         }).then(function(response) {
             console.log(response);
             console.log(queryURL);
+            var latitude = response.location.lat;
+            var longitude = response.location.lng;
         });
     };
+    // Commented this out to prevent overusing the API key for now
     googleLocation();
 });
