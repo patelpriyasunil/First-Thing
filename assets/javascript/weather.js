@@ -5,15 +5,14 @@ $(document).ready(function() {
         var zip = "19146"
         var queryURL = "https://api.openweathermap.org/data/2.5/weather?zip=" +
         zip + "&units=imperial&appid=" + APIKey
-    
+
         $.ajax({
             url: queryURL,
             method: "GET"
         }).then(function(response) {
             console.log(queryURL);
             console.log(response);
-
-            //Create weather icon
+          //Create weather icon
             var weatherIconURL = "http://openweathermap.org/img/w/" + response.weather[0].icon + ".png";
             var weatherIcon = $("<img>");
             weatherIcon.attr("src", weatherIconURL);
@@ -23,7 +22,20 @@ $(document).ready(function() {
             $("#weather").append(JSON.stringify(response));
         });
     };
-    
+          
     displayWeather();
 
+    function getLocation(){
+        var APIKey = "7973f370d72acc8a88dbd18f23806729a26e319cb848dac934bb95b0";
+        var queryURL = "https://api.ipdata.co?api-key=" + APIKey;
+
+        $.ajax({
+            url: queryURL,
+            method: "GET"
+        }).then(function(response) {
+            console.log(queryURL);
+            console.log(response);
+        })
+    };
+    getLocation();
 });
