@@ -22,10 +22,12 @@ var longitude;
             var weatherIconURL = "https://openweathermap.org/img/w/" + response.weather[0].icon + ".png";
             var weatherIcon = $("<img>");
             weatherIcon.attr("src", weatherIconURL);
-            $("#weather").append(weatherIcon);
             //Display weather and temperature
-            $("#weather").append(" " + response.weather[0].main);
-            $("#weather").append("<br/>" + (Math.floor(response.main.temp)) + "&#8457;");
+            $("#weather").append("<h3>" + (Math.floor(response.main.temp)) + "&#8457;</h3>");
+            $("#weather").append(weatherIcon);
+            $("#weather").append("<h4 class='d-inline'> " + response.weather[0].main + "</h4>");
+            $("#weather").append("<h5>Humidity: " + response.main.humidity + "%</h5>");
+            $("#weather").append("<h5>Wind speed: " + response.wind.speed + " mph</h5>");
             
         });
     };
