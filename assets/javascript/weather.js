@@ -13,13 +13,17 @@ var longitude;
             method: "GET"
         }).then(function(response) {
             console.log(response);
-          //Create weather icon
-            var weatherIconURL = "http://openweathermap.org/img/w/" + response.weather[0].icon + ".png";
+            console.log(queryURL);
+            var locationHeader = $("<h2>")
+            locationHeader.addClass("text-muted");
+            locationHeader.text("in " + response.name);
+            $("#weather").append(locationHeader);
+            //Create weather icon
+            var weatherIconURL = "https://openweathermap.org/img/w/" + response.weather[0].icon + ".png";
             var weatherIcon = $("<img>");
             weatherIcon.attr("src", weatherIconURL);
             $("#weather").append(weatherIcon);
-
-            $("#weather").append(JSON.stringify(response));
+            $("#weather").append("<h4> " + response.weather[0].main + "</h4>");
         });
     };
 
@@ -37,6 +41,5 @@ var longitude;
             displayWeather();
         });
     };
-    // Commented this out to prevent overusing the API key for now
     googleLocation();
 });
