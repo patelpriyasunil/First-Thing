@@ -23,7 +23,9 @@ var longitude;
             var weatherIcon = $("<img>");
             weatherIcon.attr("src", weatherIconURL);
             $("#weather").append(weatherIcon);
-            $("#weather").append("<h4> " + response.weather[0].main + "</h4>");
+            $("#weather").append(" " + response.weather[0].main);
+            $("#weather").append("<br/>" + (Math.floor(response.main.temp)) + "&#8457;");
+            
         });
     };
 
