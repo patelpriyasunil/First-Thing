@@ -18,11 +18,12 @@ var longitude;
             locationHeader.addClass("text-muted");
             locationHeader.text("in " + response.name);
             $("#weather").append(locationHeader);
-            //Create weather icon
+            //Create and display weather icon
             var weatherIconURL = "https://openweathermap.org/img/w/" + response.weather[0].icon + ".png";
             var weatherIcon = $("<img>");
             weatherIcon.attr("src", weatherIconURL);
             $("#weather").append(weatherIcon);
+            //Display weather and temperature
             $("#weather").append(" " + response.weather[0].main);
             $("#weather").append("<br/>" + (Math.floor(response.main.temp)) + "&#8457;");
             
