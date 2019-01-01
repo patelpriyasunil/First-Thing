@@ -16,10 +16,11 @@ var longitude;
             var locationHeader = $("<small>");
             locationHeader.addClass("text-muted");
             locationHeader.text(" in " + response.name);
-            $("#weather-header").append(locationHeader);
-            var lastUpdateDisplay = $("<h6>");
+            $("#weather-location").append(locationHeader);
+            var lastUpdateDisplay = $("<span>");
             lastUpdateDisplay.addClass("text-muted");
             lastUpdateDisplay.text(" Last Update: " + moment(response.dt, "X").format("dddd, MMMM Do YYYY, h:mm a"));
+            $("#weather-header").append(lastUpdateDisplay);
             //Create and display weather icon
             var weatherIconURL = "https://openweathermap.org/img/w/" + response.weather[0].icon + ".png";
             var weatherIcon = $("<img>");
@@ -27,7 +28,7 @@ var longitude;
             //Display weather and temperature
             $("#weather").append("<h3 class='d-inline'>" + (Math.floor(response.main.temp)) + "&#8457; </h3>");
             $("#weather").append(weatherIcon);
-            $("#weather").append("<h4 class='d-inline'>" + response.weather[0].main + "</h4>");
+            $("#weather").append("<h4 class='d-inline'> " + response.weather[0].main + "</h4>");
             $("#weather").append("<h5>Humidity: " + response.main.humidity + "%</h5>");
             $("#weather").append("<h5>Wind speed: " + response.wind.speed + " mph</h5>");
             
