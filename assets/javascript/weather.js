@@ -53,21 +53,23 @@ var longitude;
             console.log(forecasts);
             var temps = [];
             var weatherCodes = [];
-
+            
+            var forecastDisplay = $("<div>");
+            forecastDisplay.addClass("row");
+            
             $.each(forecasts, function(i, forecast) {
                 if (temps.length != 8) {
                     temps.push(forecast.main.temp);
                     weatherCodes.push(forecast.weather[0].icon);
                 }
                 else {
-                    var forecastDisplay = $("<div>");
-                    forecastDisplay.addClass("row");
                     var forecastDayDisplay = $("<div>");
-                    forecastDayDisplay.addClass("column")
+                    forecastDayDisplay.addClass("col")
                     forecastDayDisplay.append("<h6>" + moment(forecast.dt, "X").format("ddd, MMM Do") + "</h6>");
                     var highTemp = Math.max.apply(null, temps);
                     var lowTemp = Math.min.apply(null, temps);
-                    
+                    forecastDisplay.append(forecastDayDisplay);
+                    $("#weather").append(forecastDisplay);
                     temps = [];
                 };
             });
