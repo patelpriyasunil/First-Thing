@@ -56,7 +56,7 @@ var longitude;
             
             var forecastDisplay = $("<div>");
             forecastDisplay.addClass("row");
-            
+
             $.each(forecasts, function(i, forecast) {
                 if (temps.length != 8) {
                     temps.push(forecast.main.temp);
@@ -64,13 +64,21 @@ var longitude;
                 }
                 else {
                     var forecastDayDisplay = $("<div>");
-                    forecastDayDisplay.addClass("col")
+                    forecastDayDisplay.addClass("col text-center")
                     forecastDayDisplay.append("<h6>" + moment(forecast.dt, "X").format("ddd, MMM Do") + "</h6>");
                     var highTemp = Math.max.apply(null, temps);
                     var lowTemp = Math.min.apply(null, temps);
+                    
+                    var weatherIconURL = "https://openweathermap.org/img/w/" + weatherCodes[5] + ".png";
+                    var weatherIcon = $("<img>");
+                    weatherIcon.attr("src", weatherIconURL);
+                    forecastDayDisplay.append(weatherIcon);
                     forecastDisplay.append(forecastDayDisplay);
                     $("#weather").append(forecastDisplay);
                     temps = [];
+                    weatherCodes = [];
+                    temps.push(forecast.main.temp);
+                    weatherCodes.push(forecast.weather[0].icon);
                 };
             });
         });
