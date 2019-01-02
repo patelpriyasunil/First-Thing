@@ -13,6 +13,8 @@
         <script src="assets/javascript/weather.js"></script>
         <!-- Firebase -->
         <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase.js"></script>
+        <!-- Moment.js -->
+        <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
 
     </head>
     <body>
@@ -24,9 +26,11 @@
                 <div class="col-8">
                     <div class="row">
                         <div class="col"> 
-                            <h1>
-                                Current Weather
-                            </h1>
+                            <div id="weather-header">
+                                <h3 id="weather-location" class="mb-0">
+                                    Current Weather
+                                </h3>
+                            </div>
                             <div id="weather">
                                 <!--space for weather  -->
                             </div>
