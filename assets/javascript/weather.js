@@ -28,11 +28,11 @@ var longitude;
             var weatherIcon = $("<img>");
             weatherIcon.attr("src", weatherIconURL);
             //Display weather and temperature
-            $("#weather").append("<h3 class='d-inline'>" + (Math.floor(response.main.temp)) + "&#8457; </h3>");
+            $("#weather").append("<h6 class='d-inline'>" + (Math.floor(response.main.temp)) + "&#8457; </h5>");
             $("#weather").append(weatherIcon);
-            $("#weather").append("<h4 class='d-inline'> " + response.weather[0].main + "</h4>");
-            $("#weather").append("<h5>Humidity: " + response.main.humidity + "%</h5>");
-            $("#weather").append("<h5>Wind speed: " + response.wind.speed + " mph</h5>");
+            $("#weather").append("<h6 class='d-inline'> " + response.weather[0].main + "</h6>");
+            $("#weather").append("<h6>Humidity: " + response.main.humidity + "%</h6>");
+            $("#weather").append("<h6>Wind speed: " + response.wind.speed + " mph</h6>");
 
             displayForecast();
             
@@ -56,6 +56,7 @@ var longitude;
             
             var forecastDisplay = $("<div>");
             forecastDisplay.addClass("row");
+            $("#weather").append("<h4>Forecast</h4>")
 
             $.each(forecasts, function(i, forecast) {
                 if (temps.length != 8) {
@@ -64,7 +65,7 @@ var longitude;
                 }
                 else {
                     var forecastDayDisplay = $("<div>");
-                    forecastDayDisplay.addClass("col text-center")
+                    forecastDayDisplay.addClass("col text-center border border-info m-1")
                     forecastDayDisplay.append("<h6>" + moment(forecast.dt, "X").format("ddd, MMM Do") + "</h6>");
                     var highTemp = Math.max.apply(null, temps);
                     var lowTemp = Math.min.apply(null, temps);
@@ -73,6 +74,7 @@ var longitude;
                     var weatherIcon = $("<img>");
                     weatherIcon.attr("src", weatherIconURL);
                     forecastDayDisplay.append(weatherIcon);
+                    forecastDayDisplay.append("<div class='row'><div class='col'><h6>High</h6>" + Math.floor(highTemp) + "&#8457;</div><div class='col'><h6>Low</h6>" + Math.floor(lowTemp) + "&#8457;</div></div>");
                     forecastDisplay.append(forecastDayDisplay);
                     $("#weather").append(forecastDisplay);
                     temps = [];
