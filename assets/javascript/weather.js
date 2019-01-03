@@ -62,29 +62,31 @@ var longitude;
                 var today = moment().format("MMM D");
                 var forecastDay = moment(forecast.dt, "X").format("MMM D");
 
-                if (temps.length != 8) {
+                if (forecastDay !== today) {
                     temps.push(forecast.main.temp);
                     weatherCodes.push(forecast.weather[0].icon);
+                    console.log(today + " & " + forecastDay);
+
+                    if (temps.length === 8) {
+                        var forecastDayDisplay = $("<div>");
+                        forecastDayDisplay.addClass("col text-center border border-info m-1")
+                        forecastDayDisplay.append("<h6>" + moment(forecast.dt, "X").format("ddd, MMM Do") + "</h6>");
+                        var highTemp = Math.max.apply(null, temps);
+                        var lowTemp = Math.min.apply(null, temps);
+                        
+                        var weatherIconURL = "https://openweathermap.org/img/w/" + weatherCodes[5] + ".png";
+                        var weatherIcon = $("<img>");
+                        weatherIcon.attr("src", weatherIconURL);
+                        forecastDayDisplay.append(weatherIcon);
+                        forecastDayDisplay.append("<div class='row'><div class='col'><h6>High</h6>" + Math.floor(highTemp) + "&#8457;</div><div class='col'><h6>Low</h6>" + Math.floor(lowTemp) + "&#8457;</div></div>");
+                        forecastDisplay.append(forecastDayDisplay);
+                        $("#weather").append(forecastDisplay);
+                        temps = [];
+                        weatherCodes = [];
+                        temps.push(forecast.main.temp);
+                        weatherCodes.push(forecast.weather[0].icon);
+                    } 
                 }
-                else {
-                    var forecastDayDisplay = $("<div>");
-                    forecastDayDisplay.addClass("col text-center border border-info m-1")
-                    forecastDayDisplay.append("<h6>" + moment(forecast.dt, "X").format("ddd, MMM Do") + "</h6>");
-                    var highTemp = Math.max.apply(null, temps);
-                    var lowTemp = Math.min.apply(null, temps);
-                    
-                    var weatherIconURL = "https://openweathermap.org/img/w/" + weatherCodes[5] + ".png";
-                    var weatherIcon = $("<img>");
-                    weatherIcon.attr("src", weatherIconURL);
-                    forecastDayDisplay.append(weatherIcon);
-                    forecastDayDisplay.append("<div class='row'><div class='col'><h6>High</h6>" + Math.floor(highTemp) + "&#8457;</div><div class='col'><h6>Low</h6>" + Math.floor(lowTemp) + "&#8457;</div></div>");
-                    forecastDisplay.append(forecastDayDisplay);
-                    $("#weather").append(forecastDisplay);
-                    temps = [];
-                    weatherCodes = [];
-                    temps.push(forecast.main.temp);
-                    weatherCodes.push(forecast.weather[0].icon);
-                };
             });
         });
     };
