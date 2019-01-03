@@ -59,6 +59,9 @@ var longitude;
             $("#weather").append("<h4>Forecast</h4>")
 
             $.each(forecasts, function(i, forecast) {
+                var today = moment().format("MMM D");
+                var forecastDay = moment(forecast.dt, "X").format("MMM D");
+
                 if (temps.length != 8) {
                     temps.push(forecast.main.temp);
                     weatherCodes.push(forecast.weather[0].icon);
