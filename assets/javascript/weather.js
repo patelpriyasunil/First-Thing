@@ -83,8 +83,6 @@ var longitude;
                         $("#weather").append(forecastDisplay);
                         temps = [];
                         weatherCodes = [];
-                        temps.push(forecast.main.temp);
-                        weatherCodes.push(forecast.weather[0].icon);
                     } 
                 }
             });
