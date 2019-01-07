@@ -1,72 +1,72 @@
-window.onload = function() {
-//user clicked on the add button in the to-do field add that text into the to-do text
-document.getElementById('add-to-do').addEventListener('click', function() {
-  var value = document.getElementById('to-do').value;  
-    console.log(value);
-});
-}
-
-
-
-
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyDZwIxXFNk928XzjMRZ6bpXVkeuEMbwIUI",
+    authDomain: "in-the-know-a0b16.firebaseapp.com",
+    databaseURL: "https://in-the-know-a0b16.firebaseio.com",
+    projectId: "in-the-know-a0b16",
+    storageBucket: "",
+    messagingSenderId: "447330895711"
+  };
+  firebase.initializeApp(config);
+    
+var database = firebase.database();
 
 //create the initial todocount variable
 var toDoCount = 0;
 
-$("#add-to-do").on('click', function(event) {
-  event.preventDefault();
+//initialize todos for firebase
+var todos;
 
-//to get the to do value from the textbox and store it in a variable
-var ToDoItems = $("#to-do").val().trim();
+$(function() {
+  //user clicked on the add button in the to-do field add that text into the to-do text
+  $('#add-to-do').on('click', function(event) {
+    event.preventDefault();
 
-var ToDoAdd = $("<p>");
-ToDoAdd.attr("id", "item-" + toDoCount);
-ToDoAdd.text(ToDoItems);
+    //assign variable to the value entered into the textbox
+    var value = document.getElementById('to-do').value;
+    //test value
+    console.log(value);
 
-console.log(ToDoItems);
+    var todoitem = $("#to-dos");
+    todoitem.attr("item-");
+    //prepend values into the html and add checkmark, checkbox, and line break to make list
+    var linebreak = "<br/>";
+    var todoclose = $("<button>");
+    todoclose.attr("data-to-do", toDoCount);
+    todoclose.addClass("checkbox");
+    todoclose.text("☑");
 
-var todoclose = $("<button>");
+    //prepend values to html
+    $("<div/>", {
+        "class": "to-do-item"
+      })
+      .append([todoclose, value, linebreak])
+      .appendTo($("#to-dos"));
+    toDoCount++;
 
-todoclose.attr("data-to-do", toDoCount);
+    //to remove item from checklist
+    $(document.body).on("click", ".to-do-item", function() {
+      $(this).remove();
+    });
+  });
 
-//create a class called checbox 
-todoclose.addClass("checkbox");
+  //Firebase Stuff
+  $("#add-to-do").on('click', function(event){
+    event.preventDefault();
+    todos = $(".to-do-item").val().trim();
 
-//include a checkbox to each item
-todoclose.text("✓");
+    console.log(todos);
+ 
+    database.ref().push({
+    todos: todos
+    });
+    });
+    //firebase watcher
+    database.ref().limitToLast(1).on('value', snapshot => {
+    snapshot.forEach(snap => {
+        todos = snap.child("List").val();
+    });
+    });
 
-//prepend the items added to be listed out.
-ToDoAdd = ToDoAdd.prepend(todoclose);
 
-//test
-console.log(toDoAdd);
-
-//append values from todoadd to html
-$("#to-dos").append(toDoAdd);
-
-//clear the textbox
-$("to-do").val("");
-
-toDoCount++;
 });
-
-
-$(document.body).on("click", ".checkbox", function() {
-
-  var toDoNumber = $(this).attr("data-to-do");
-  $("#item-" + toDoNumber).remove();
-});
-
-//Initialize Firebase
-//var config = {
-//  apiKey: "AIzaSyDzBCE_o3i2jGTkD2BWuiZmppUYbEyP5pI",
-//  authDomain: "project1-18921.firebaseapp.com",
-//  databaseURL: "https://project1-18921.firebaseio.com",
-//  projectId: "project1-18921",
-//  storageBucket: "project1-18921.appspot.com",
-//  messagingSenderId: "55286196596"
-//};
-//firebase.initializeApp(config);
-
-//var database = firebase.database();
-

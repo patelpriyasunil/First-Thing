@@ -17,6 +17,9 @@
         <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase.js"></script>
         <!-- Moment.js -->
         <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+        <!--To-Do List-->
+        <script src="assets/javascript/todolist.js"></script>
+
     </head>
     <body>
         <div class="jumbotron bg-dark">
@@ -57,7 +60,14 @@
                     <span id="todo-item">Add your Agenda Here <input id="to-do" type = "text"><input id="add-to-do" value="Add Item" type="submit"></span>
                 </form>
                     <!-- To Do List -->
-                    <div id ="to-dos"></div>
+                    <form onsubmit= "return false;">
+                        <span id = "todo-item" type = "text">
+                        <h4>Add your Agenda Here</h4>
+                        <input id ="to-do" type = "text">
+                        <input id ="add-to-do" value = "Add Item" type = "submit">
+                        </span>
+                    </form>
+                 <div id="to-dos"></div>
                 </div>
 
             </div>
