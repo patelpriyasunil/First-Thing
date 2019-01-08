@@ -7,6 +7,8 @@
     storageBucket: "",
     messagingSenderId: "447330895711"
   };
+
+  console.log(config);
   firebase.initializeApp(config);
     
 var database = firebase.database();
@@ -53,7 +55,8 @@ $(function() {
   //Firebase Stuff
   $("#add-to-do").on('click', function(event){
     event.preventDefault();
-    todos = $(".to-do-item").val().trim();
+    debugger
+    todos = $(".to-do-item").text().slice(1);
 
     console.log(todos);
  
