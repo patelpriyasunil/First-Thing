@@ -14,7 +14,7 @@ console.log(response);
       // Creating and storing a div tag
       var articleDiv = $("<div>");
       //  adding border and margin
-      articleDiv.addClass("col text-left border border-info m-1")
+      articleDiv.addClass("col text-left m-1")
 
 
 
@@ -54,7 +54,7 @@ console.log(response);
 
          // Displaying the abstract
          articleDiv.append(pThree);
-
+         articleDiv.append("<hr>");
 
 
    // Appending the articleDiv to the HTML page in the "#acticle-section" div
