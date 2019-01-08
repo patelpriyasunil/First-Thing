@@ -16,10 +16,12 @@
         <script src="assets/javascript/weather.js"></script>
         <!-- Firebase -->
         <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase.js"></script>
-         <!-- js for news api -->
+        <!-- js for news api -->
         <script src="assets/javascript/news.js"></script>
         <!-- Moment.js -->
         <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+        <!--To-Do List-->
+        <script src="assets/javascript/todolist.js"></script>
     </head>
     <body>
         <div class="jumbotron bg-dark">
@@ -53,7 +55,21 @@
                                     </div>
                     </div>
                 </div>
-
+                <div class ="col-4">
+                    <!--Input Form-->
+                <form>
+                    <span id="todo-item">Add your Agenda Here <input id="to-do" type = "text"><input id="add-to-do" value="Add Item" type="submit"></span>
+                </form>
+                    <!-- To Do List -->
+                    <form onsubmit= "return false;">
+                        <span id = "todo-item" type = "text">
+                        <h4>Add your Agenda Here</h4>
+                        <input id ="to-do" type = "text">
+                        <input id ="add-to-do" value = "Add Item" type = "submit">
+                        </span>
+                    </form>
+                 <div id="to-dos"></div>
+                </div>
 
             <div class ="col-4">
                 <!--Input Form-->
@@ -75,12 +91,3 @@
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
