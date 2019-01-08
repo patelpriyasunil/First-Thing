@@ -69,7 +69,7 @@ var longitude;
 
                     if (temps.length === 8) {
                         var forecastDayDisplay = $("<div>");
-                        forecastDayDisplay.addClass("col text-center border border-info m-1")
+                        forecastDayDisplay.addClass("col text-center weatherBorder m-1")
                         forecastDayDisplay.append("<h6>" + moment(forecast.dt, "X").format("ddd, MMM Do") + "</h6>");
                         var highTemp = Math.max.apply(null, temps);
                         var lowTemp = Math.min.apply(null, temps);
