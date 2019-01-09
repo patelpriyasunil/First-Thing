@@ -43,9 +43,8 @@ h3, h4 {
 h3{
     font-size: 35px;
 }
-.border-info {
-    color: #110934;
-}
+
 .weatherBorder{
-    
+    border: 1px solid #110934;
+    border-radius: 4px;
 }
