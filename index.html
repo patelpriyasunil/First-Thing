@@ -32,6 +32,10 @@
             <div class="container" id ="title">
                 <h1 class="first">First</h1>
                 <h1 class="things">Things</h1>
+                <input id="txtEmail" type = "email" placeholder="Email">
+                <input id = "txtPassword" type = "password" placeholder="password">
+                <button id="btnLogin" class="btn btn-success">Log in</button>
+                <button id="btnSignUp" class="btn btn-success">Sign Up</button>
             </div>
         </div>
         <div class="container">
@@ -63,18 +67,20 @@
                     </div>
                 </div>
                 <div class ="col-4">
-                    <!--Input Form-->
-              
-                    <!-- To Do List -->
-                    <form onsubmit= "return false;">
-                        <span id = "todo-item" type = "text">
-                        <h4>Add your Agenda Here</h4>
-                        <input id ="to-do" type = "text">
-                        <input id ="add-to-do" value = "Add Item" type = "submit">
-                        </span>
-                    </form>
-                 <div id="to-dos"></div>
-                </div>
+                        <form role = "form">
+                            <div class = "form-group row">
+                            <div class = "To-Do-List">
+                                <label for="todo-input"><h4>Your To Do List Here:</h4></label>
+                            </div>
+                            <input class="form-control" id="todo-input" type = "text">
+                            </div><div class="button">
+                                <button class ="btn btn-success" id="add-todo" type="submit">Add</button></div>
+                        </form>
+        
+                    </div>
+        
+                    <tbody id = "table_body">
+                    </tbody>
 
     </div>
  </div> 

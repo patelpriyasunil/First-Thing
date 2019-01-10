@@ -7,69 +7,103 @@
     storageBucket: "",
     messagingSenderId: "447330895711"
   };
+firebase.initializeApp(config);
 
-  console.log(config);
-  firebase.initializeApp(config);
-    
+//create a variable to reference the database
 var database = firebase.database();
 
-//create the initial todocount variable
-var toDoCount = 0;
+window.onload=function(){
+//get login elements
+const txtEmail = document.getElementById('txtEmail');
+const txtPassword = document.getElementById("txtPassword");
+const btnLogin = document.getElementById('btnLogin');
+const btnSignUp = document.getElementById('btnSignUp');
 
-//initialize todos for firebase
-var todos;
+//add login event
+btnLogin.addEventListener('click', e => {
+  const email = txtEmail.value;
+  const pass = txtPassword.value;
+  const auth = firebase.auth(); 
 
-$(function() {
-  //user clicked on the add button in the to-do field add that text into the to-do text
-  $('#add-to-do').on('click', function(event) {
-    event.preventDefault();
+  auth.signInWithEmailAndPassword(email, pass);
+  //sign in 
+  const promise = auth.signInWithEmailAndPassword(email, pass);
+  promise.catch(e=> console.log(e.message));
+});
 
-    //assign variable to the value entered into the textbox
-    var value = document.getElementById('to-do').value;
-    //test value
-    console.log(value);
+//add signup
+btnSignUp.addEventListener('click', e => {
+  const email = txtEmail.value;
+  const pass = txtPassword.value;
+  const auth = firebase.auth(); 
+  //sign in 
+  const promise = auth.signInWithEmailAndPassword(email, pass);
+  auth.createUserWithEmailAndPassword(email, pass);
+  promise.catch(e=> console.log(e.message));
+});
 
-    var todoitem = $("#to-dos");
-    todoitem.attr("item-");
-    //prepend values into the html and add checkmark, checkbox, and line break to make list
-    var linebreak = "<br/>";
-    var todoclose = $("<button>");
-    todoclose.attr("data-to-do", toDoCount);
-    todoclose.addClass("checkbox");
-    todoclose.text("☑");
+//add realtime listener
+firebase.auth().onAuthStateChanged(firebaseUser => {
+  if(firebaseUser) {
+    console.log(firebaseUser);
+    Runchecklist();
+  } else {
+    console.log('not logged in');
+  }
+});
 
-    //prepend values to html
-    $("<div/>", {
-        "class": "to-do-item"
-      })
-      .append([todoclose, value, linebreak])
-      .appendTo($("#to-dos"));
-    toDoCount++;
+function Runchecklist() {
+//initialize value
+var todos = "";
+var Firedata = firebase.database().ref().child('todos/' + todos);
+console.log(Firedata);
 
-    //to remove item from checklist
-    $(document.body).on("click", ".to-do-item", function() {
-      $(this).remove();
-    });
+$(document).ready(function() {
+// user clicked on the add button in the to-do field add that text into the to-do text
+$('#add-todo').on('click', function(event) {
+  event.preventDefault();
+
+  //values per text box
+  todos = $("#todo-input").val().trim();
+  
+  //test values from textbox
+  console.log(todos);
+
+//code for handling the push
+database.ref().push({
+  todos: todos
   });
 
-  //Firebase Stuff
-  $("#add-to-do").on('click', function(event){
-    event.preventDefault();
+});
+
+//firebase watcher
+database.ref().limitToLast(1).on('value', snapshot => {
+  var index = 0;
+debugger
+  var test = snapshot.val();
+  var keys = Object.keys(test);
+  debugger
+  snapshot.forEach((snap) => {
     debugger
-    todos = $(".to-do-item").text().slice(1);
+    todos = snap.child("todos").val();
+//prepend values to html
+    $("<div/>", {
+      "class": "to-do-item",
+      "data-path": keys[index]
+    }).append([todos]).appendTo($(".col-4"));
+index++;
+//to remove item from checklist
+todos = snap.child("todos").val();
+$(document.body).on("click", ".to-do-item",function(e) {
+  debugger
+  $(this).remove();
+  database.ref(`/${e.currentTarget.attributes[1].nodeValue}`).remove();
+  
+});
 
-    console.log(todos);
- 
-    database.ref().push({
-    todos: todos
-    });
-    });
-    //firebase watcher
-    database.ref().limitToLast(1).on('value', snapshot => {
-    snapshot.forEach(snap => {
-        todos = snap.child("List").val();
-    });
-    });
-
+  });
+});
 
 });
+}
+}
