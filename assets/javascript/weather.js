@@ -1,7 +1,7 @@
-$(document).ready(function() {
-    
-var latitude;
-var longitude;
+$(document).ready(function () {
+
+    var latitude;
+    var longitude;
 
     function displayWeather() {
         var APIKey = "dd90b036fea16c286d0b1e900c84157c";
@@ -10,7 +10,7 @@ var longitude;
         $.ajax({
             url: queryURL,
             method: "GET"
-        }).then(function(response) {
+        }).then(function (response) {
             console.log(response);
             console.log(queryURL);
             // Show the user the city we are displaying weather for
@@ -35,7 +35,7 @@ var longitude;
             $("#weather").append("<h6>Wind speed: " + response.wind.speed + " mph</h6>");
 
             displayForecast();
-            
+
         });
     };
 
@@ -46,20 +46,20 @@ var longitude;
         $.ajax({
             url: queryURL,
             method: "GET"
-        }).then(function(response) {
+        }).then(function (response) {
             console.log(response);
 
             var forecasts = response.list;
             console.log(forecasts);
             var temps = [];
             var weatherCodes = [];
-            
+
             var forecastDisplay = $("<div>");
             forecastDisplay.addClass("row");
             $("#weather").append("<hr>")
             $("#weather").append("<h4>Forecast</h4>")
 
-            $.each(forecasts, function(i, forecast) {
+            $.each(forecasts, function (i, forecast) {
                 var today = moment().format("MMM D");
                 var forecastDay = moment(forecast.dt, "X").format("MMM D");
 
@@ -74,7 +74,7 @@ var longitude;
                         forecastDayDisplay.append("<h6>" + moment(forecast.dt, "X").format("ddd, MMM Do") + "</h6>");
                         var highTemp = Math.max.apply(null, temps);
                         var lowTemp = Math.min.apply(null, temps);
-                        
+
                         var weatherIconURL = "https://openweathermap.org/img/w/" + weatherCodes[5] + ".png";
                         var weatherIcon = $("<img>");
                         weatherIcon.attr("src", weatherIconURL);
@@ -84,7 +84,7 @@ var longitude;
                         $("#weather").append(forecastDisplay);
                         temps = [];
                         weatherCodes = [];
-                    } 
+                    }
                 }
             });
         });
@@ -97,7 +97,7 @@ var longitude;
         $.ajax({
             url: queryURL,
             method: "POST"
-        }).then(function(response) {
+        }).then(function (response) {
             console.log(response);
             latitude = response.location.lat;
             longitude = response.location.lng;
