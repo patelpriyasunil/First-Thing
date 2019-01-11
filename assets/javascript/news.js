@@ -7,7 +7,6 @@ $.ajax({
    url: url,
    method: 'GET',
 }).done(function (response) {
-   console.log(url);
    console.log(response);
 
    for (var i = 0; i <= 2; i++) {

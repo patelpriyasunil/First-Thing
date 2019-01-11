@@ -12,7 +12,6 @@ $(document).ready(function () {
             method: "GET"
         }).then(function (response) {
             console.log(response);
-            console.log(queryURL);
             // Show the user the city we are displaying weather for
             var locationHeader = $("<small>");
             locationHeader.addClass("text-muted");
@@ -66,7 +65,7 @@ $(document).ready(function () {
                 if (forecastDay !== today) {
                     temps.push(forecast.main.temp);
                     weatherCodes.push(forecast.weather[0].icon);
-                    console.log(today + " & " + forecastDay);
+                    console.log(forecastDay);
 
                     if (temps.length === 8) {
                         var forecastDayDisplay = $("<div>");
@@ -86,6 +85,9 @@ $(document).ready(function () {
                         weatherCodes = [];
                     }
                 }
+                else {
+                    console.log(today);
+                };
             });
         });
     };
