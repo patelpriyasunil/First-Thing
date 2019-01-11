@@ -14,7 +14,7 @@ console.log(response);
       // Creating and storing a div tag
       var articleDiv = $("<div>");
       //  adding border and margin
-      articleDiv.addClass("col text-left border border-info m-1")
+      articleDiv.addClass("col text-left")
       articleDiv.addClass("col text-left m-1")
 
 
