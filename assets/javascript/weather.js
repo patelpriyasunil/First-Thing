@@ -56,6 +56,7 @@ var longitude;
             
             var forecastDisplay = $("<div>");
             forecastDisplay.addClass("row");
+            $("#weather").append("<hr>")
             $("#weather").append("<h4>Forecast</h4>")
 
             $.each(forecasts, function(i, forecast) {
