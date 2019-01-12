@@ -12,7 +12,9 @@ firebase.initializeApp(config);
 //create a variable to reference the database
 var database = firebase.database();
 
+
 window.onload=function(){
+$("#Login-Warning").hide();
 //get login elements
 const txtEmail = document.getElementById('txtEmail');
 const txtPassword = document.getElementById("txtPassword");
@@ -46,10 +48,12 @@ btnSignUp.addEventListener('click', e => {
 firebase.auth().onAuthStateChanged(firebaseUser => {
   if(firebaseUser) {
     console.log(firebaseUser);
+    $("#Login-Warning").remove();
     Runchecklist();
   } else {
     console.log('not logged in');
-  }
+    $("#Login-Warning").show();
+}
 });
 
 function Runchecklist() {
@@ -62,7 +66,6 @@ $(document).ready(function() {
 // user clicked on the add button in the to-do field add that text into the to-do text
 $('#add-todo').on('click', function(event) {
   event.preventDefault();
-
   //values per text box
   todos = $("#todo-input").val().trim();
   
@@ -79,12 +82,11 @@ database.ref().push({
 //firebase watcher
 database.ref().limitToLast(1).on('value', snapshot => {
   var index = 0;
-debugger
   var test = snapshot.val();
   var keys = Object.keys(test);
-  debugger
+  
   snapshot.forEach((snap) => {
-    debugger
+    
     todos = snap.child("todos").val();
 //prepend values to html
     $("<div/>", {
@@ -92,10 +94,10 @@ debugger
       "data-path": keys[index]
     }).append([todos]).appendTo($(".col-4"));
 index++;
+
 //to remove item from checklist
 todos = snap.child("todos").val();
 $(document.body).on("click", ".to-do-item",function(e) {
-  debugger
   $(this).remove();
   database.ref(`/${e.currentTarget.attributes[1].nodeValue}`).remove();
   
