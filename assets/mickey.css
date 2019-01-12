@@ -1,19 +1,19 @@
 .jumbotron{
-    background-image: url('../assets/pikachu.jpg');
+    background-image: url('../assets/mickey.jpg');
     background-size: 100% 100%;
     background-repeat: no-repeat;
     padding-bottom: 15px;
     padding-top: 40px;
 }
 .first{
-    color:#000000;
+    color:#0074E1;
     font-size: 50px;
     font-family: 'Arimo', sans-serif;
     margin-bottom: 0px;
 }
 .thing{
     font-size: 80px;
-    color: #e92929;
+    color:#e92929;
     font-family: 'Anton', sans-serif;
 }
 body{
@@ -30,7 +30,7 @@ body{
     box-sizing: border-box;
 }
 #btnLogin, #btnSignUp{
-    background-color: #5c3613;
+    background-color: #0074E1;
 }
 #add-to-do {
     width: 25%;
@@ -40,7 +40,7 @@ body{
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
-    background-color: #5c3613;
+    background-color:#F79E02;
 }
 h3, h4 {
     color:#000000;
@@ -50,7 +50,7 @@ h3{
 }
 
 .weatherBorder{
-    border-right: 6px solid #5c3613;
+    border-right: 6px solid #0074E1;
     height: 125px;
    
 }
@@ -71,7 +71,7 @@ h3{
 #add-todo{
     margin-left:375px;
     margin-top: -100px;
-    background-color: #5c3613;
+    background-color: #e92929;
 }
 
 .to-do-item{
@@ -95,7 +95,7 @@ h3{
     display: inline-block; 
 }
 #dropupB{
-    background-color: #5c3613;
+    background-color:#e92929;
 }
 .dropup-menu{
     position: absolute;
