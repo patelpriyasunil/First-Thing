@@ -7,10 +7,14 @@
         <title>In-The-Know</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- BootStrap -->
-        <link rel="stylesheet" type="text/css" media="screen" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" />
+        <link rel="stylesheet" type="text/css" media="screen" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"/>
+       
         <!-- CSS -->
-        <!-- <link rel="stylesheet" type="text/css" href="assets/style.css"/> -->
-        <link rel="stylesheet" type="text/css" href="assets/pikachu.css"/>
+        <link rel="stylesheet" type="text/css" id="one" href="assets/style.css"/>
+        <link rel="stylesheet" type="text/css" id="two" href="assets/pikachu.css"/>
+        <link rel="stylesheet" type="text/css" id="three" href="assets/star-wars.css"/>
+       
+        
         <!-- Firebase -->
         <script src="https://www.gstatic.com/firebasejs/5.7.2/firebase.js"></script>
         <!-- JQuery -->
@@ -27,6 +31,9 @@
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Arimo" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
+        <!-- Drop Up Menu -->
+        <script src="assets/javascript/background.js"></script>
+
     </head>
     <body>
         <div class="jumbotron">
@@ -37,6 +44,16 @@
                 <input id = "txtPassword" type = "password" placeholder="password">
                 <button id="btnLogin" class="btn btn-success">Log in</button>
                 <button id="btnSignUp" class="btn btn-success">Sign Up</button>
+                <div class="btn-group dropup" id="dropup">
+                    <button type="button" class="btn btn-secondary dropdown-toggle" id= "dropupB" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Backgrounds
+                    </button>
+                    <div class="dropup-menu">
+                        <a class="dropdown-item" id="original" href="#">Original</a>
+                        <a class="dropdown-item" id="pikachu" href="#">Pikachu</a>
+                        <a class="dropdown-item" id="star-wars" href="#">Star Wars</a>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="container">

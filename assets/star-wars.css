@@ -1,21 +1,23 @@
 .jumbotron{
-    background-color: #B2D732;
+    background-image: url('../assets/star-wars1.jpg');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
     padding-bottom: 15px;
     padding-top: 40px;
 }
 .first{
-    color:#110934;
+    color:#0074E1;
     font-size: 50px;
     font-family: 'Arimo', sans-serif;
     margin-bottom: 0px;
 }
 .thing{
     font-size: 80px;
-    color: #FC600A;
+    color:#F79E02;
     font-family: 'Anton', sans-serif;
 }
 body{
-    background-color: #F0F7D4;
+    background-color: white
 }
 #to-do{
     width: 60%;
@@ -27,6 +29,9 @@ body{
     border-radius: 4px;
     box-sizing: border-box;
 }
+#btnLogin, #btnSignUp{
+    background-color: #0074E1;
+}
 #add-to-do {
     width: 25%;
     padding: 5px 8px;
@@ -35,17 +40,17 @@ body{
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
-    background-color: #45a049;
+    background-color:#F79E02;
 }
 h3, h4 {
-    color: #4424D6;
+    color:#000000;
 }
 h3{
     font-size: 35px;
 }
 
 .weatherBorder{
-    border-right: 6px solid green;
+    border-right: 6px solid #0074E1;
     height: 125px;
    
 }
@@ -66,10 +71,11 @@ h3{
 #add-todo{
     margin-left:375px;
     margin-top: -100px;
+    background-color: #F79E02;
 }
 
 .to-do-item{
-    color: #4424D6;
+    color: #000000;
     font-size: 24px;
 }
 
@@ -89,7 +95,7 @@ h3{
     display: inline-block; 
 }
 #dropupB{
-    background-color: #45a049;
+    background-color:#F79E02;
 }
 .dropup-menu{
     position: absolute;
@@ -104,5 +110,3 @@ h3{
     padding: 12px 16px;
     text-decoration: none;
   }
-
-  
