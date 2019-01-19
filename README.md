@@ -2,6 +2,8 @@ First Thing
 
 Project 1 of Penn LPS Coding Bootcamp
 
+Deployed: https://patelpriyasunil.github.io/First-Thing/
+
 Dev Team Members:
 Priya Patel
 Jenny Na
